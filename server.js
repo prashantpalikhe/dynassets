@@ -33,7 +33,7 @@ function initServer(program) {
 
         res.sendStatus(404);
     });
-    
+
 
     app.listen(port, () => {
         console.log('Assets served at ', chalk.cyan(`http://localhost:${port}/asset/<type>/<delayInMS>`));
