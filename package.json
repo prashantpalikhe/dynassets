@@ -1,0 +1,26 @@
+{
+  "name": "dynassets",
+  "version": "1.0.0",
+  "description": "Dynassets creates a simple server to serve static files like JavaScript, CSS etc. with specific delay and execution time.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantpalikhe/dynassets.git"
+  },
+  "keywords": [],
+  "author": "Prashant <prashpal09@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prashantpalikhe/dynassets/issues"
+  },
+  "homepage": "https://github.com/prashantpalikhe/dynassets#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "cors": "^2.8.3",
+    "express": "^4.15.2"
+  }
+}
