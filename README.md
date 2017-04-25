@@ -32,10 +32,10 @@ Now, you can start using delayed assets in your templates.
 
 E.g.
 
-Javascript: `http://localhost:3000/js/1000`
-Stylesheet: `http://localhost:3000/css/1000`
-Font: `http://localhost:3000/font/1000` (Serves [Roboto](https://fonts.google.com/specimen/Roboto) font from Google)
-Image: `http://localhost:3000/image/1000` (Serves random image from [lorempixel](http://lorempixel.com))
+- Javascript: `http://localhost:3000/js/1000`
+- Stylesheet: `http://localhost:3000/css/1000`
+- Font: `http://localhost:3000/font/1000` (Serves [Roboto](https://fonts.google.com/specimen/Roboto) font from Google)
+- Image: `http://localhost:3000/image/1000` (Serves random image from [lorempixel](http://lorempixel.com))
 
 If you need to use a different port number:
 
