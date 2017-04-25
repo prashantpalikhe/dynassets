@@ -26,12 +26,14 @@ function initServer(program) {
         if (action) {
             console.log(`Serving ${req.params.type} with ${delay}ms delay`);
 
-            sleep(delay);
+            setTimeout(() => {
+                action(res);
+            }, delay);
 
-            return action(res);
+        } else {
+            res.sendStatus(404);
         }
 
-        res.sendStatus(404);
     });
 
 
