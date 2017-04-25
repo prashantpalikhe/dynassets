@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const chalk = require('chalk');
+const localtunnel = require('localtunnel');
 
 const typeToActionMap = {
     js: serveJS,
@@ -38,15 +39,20 @@ function initServer(program) {
 
 
     app.listen(port, () => {
-        console.log('Assets served at ', chalk.cyan(`http://localhost:${port}/asset/<type>/<delayInMS>`));
-        console.log('Type can be', chalk.yellow('js'), chalk.magenta('css'), chalk.blue('image'), chalk.red('font'));
+        if (program.tunnel) {
+            localtunnel(port, (err, tunnel) => {
+                serverMessage(tunnel.url);
+            });
+
+        } else {
+            serverMessage(`http://localhost:${port}`);
+        }
     });
 }
 
-function sleep(ms) {
-    const start = Date.now();
-
-    while (Date.now() < (start + ms));
+function serverMessage(url) {
+    console.log('Assets served at ', chalk.cyan(`${url}/asset/<type>/<delayInMS>`));
+    console.log('Type can be', chalk.yellow('js'), chalk.magenta('css'), chalk.blue('image'), chalk.red('font'));
 }
 
 

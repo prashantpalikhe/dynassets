@@ -42,3 +42,9 @@ If you need to use a different port number:
 ```
 $ dynassets -p 3001
 ```
+
+If you need to serve assets on a url reachable via the internet
+
+```
+$ dynassets -t
+```
