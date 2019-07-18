@@ -72,8 +72,8 @@ function serveCSS(response) {
 
     response.send(`
         body {
-            background-color: ${randomHexColorCode()}
-            font-size: ${randomNumberInRange(16, 100)}px
+            background-color: ${randomHexColorCode()};
+            font-size: ${Math.round(randomNumberInRange(16, 100))}px;
         }
     `);
 }
