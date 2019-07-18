@@ -1,6 +1,6 @@
 {
     "name": "dynassets",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Dynassets creates a simple server to serve static files like JavaScript, CSS etc. with specific delay and execution time.",
     "main": "index.js",
     "scripts": {
