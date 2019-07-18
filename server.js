@@ -5,6 +5,7 @@ const path = require('path');
 const http = require('http');
 const chalk = require('chalk');
 const localtunnel = require('localtunnel');
+const { randomHexColorCode, randomNumberInRange } = require('./utils');
 
 const typeToActionMap = {
     js: serveJS,
@@ -30,20 +31,16 @@ function initServer(program) {
             setTimeout(() => {
                 action(res);
             }, delay);
-
         } else {
             res.sendStatus(404);
         }
-
     });
-
 
     app.listen(port, () => {
         if (program.tunnel) {
             localtunnel(port, (err, tunnel) => {
                 serverMessage(tunnel.url);
             });
-
         } else {
             serverMessage(`http://localhost:${port}`);
         }
@@ -51,21 +48,34 @@ function initServer(program) {
 }
 
 function serverMessage(url) {
-    console.log('Assets served at ', chalk.cyan(`${url}/asset/<type>/<delayInMS>`));
-    console.log('Type can be', chalk.yellow('js'), chalk.magenta('css'), chalk.blue('image'), chalk.red('font'));
+    console.log(
+        'Assets served at ',
+        chalk.cyan(`${url}/asset/<type>/<delayInMS>`)
+    );
+    console.log(
+        'Type can be',
+        chalk.yellow('js'),
+        chalk.magenta('css'),
+        chalk.blue('image'),
+        chalk.red('font')
+    );
 }
-
 
 function serveJS(response) {
     response.set('Content-Type', 'application/javascript');
 
-    response.send('');
+    response.send('console.log(Date.now())');
 }
 
 function serveCSS(response) {
     response.set('Content-Type', 'text/css');
 
-    response.send('');
+    response.send(`
+        body {
+            background-color: ${randomHexColorCode()}
+            font-size: ${randomNumberInRange(16, 100)}px
+        }
+    `);
 }
 
 function serveFont(response) {
@@ -77,7 +87,7 @@ function serveFont(response) {
 function serveImage(response) {
     response.set('Content-Type', 'image/jpeg');
 
-    http.get('http://lorempixel.com/100/100/', (image) => {
+    http.get('http://lorempixel.com/100/100/', image => {
         image.pipe(response);
     });
 }
